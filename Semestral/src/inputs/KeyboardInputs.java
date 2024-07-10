@@ -2,35 +2,47 @@ package inputs;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import Main.Game;
+import Main.GamePanel;
 
-public class KeyboardInputs implements KeyListener{
+public class KeyboardInputs implements KeyListener {
 
-    public void keyTyped(KeyEvent e) {
-        // Handle key typed event here
-    }
+	private GamePanel gamePanel;
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // Handle key pressed event here
-    }
+	public KeyboardInputs(GamePanel gamePanel) {
+		this.gamePanel = gamePanel;
+	}
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-        
-    	switch(e.getKeyCode()) {
-    	
-    	case KeyEvent.VK_UP:
-    		System.out.println("Hola");
-    		break;
-    	case KeyEvent.VK_DOWN:
-    		System.out.println("Ve");
-    		break;
-    	case KeyEvent.VK_RIGHT:
-    		System.out.println("a ");
-    		break;
-    	case KeyEvent.VK_LEFT:
-    		System.out.println("la Tienda ");
-    		break;
-    		
-    }
-}}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_W:
+			gamePanel.changeYDelta(-5);
+			break;
+		case KeyEvent.VK_A:
+			gamePanel.changeXDelta(-5);
+			break;
+		case KeyEvent.VK_S:
+			gamePanel.changeYDelta(5);
+			break;
+		case KeyEvent.VK_D:
+			gamePanel.changeXDelta(5);
+			break;
+		}
+
+	}
+
+}

@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Menu extends JFrame {
@@ -14,6 +16,22 @@ public class Menu extends JFrame {
     private Juego juego;
     private KeyboardInputs keyboardInputs;
     private MouseInputs mouseInputs;
+    
+    private Font loadFont(String path, float size) {
+        Font font = null;
+        try {
+            File fontFile = new File(path);
+            font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(size);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(font);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+            
+            font = new Font("Arial", Font.PLAIN, (int) size);
+        }
+        return font;
+    }
+
 
     public Menu() {
         setTitle("Carreras ilegales");
@@ -24,33 +42,39 @@ public class Menu extends JFrame {
         apostadores = new ArrayList<>();
         juego = new Juego(apostadores);
 
-        
         keyboardInputs = new KeyboardInputs(this);
         mouseInputs = new MouseInputs();
 
-        
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(5, 1, 10, 10));
+        mainPanel.setLayout(new GridLayout(6, 1, 10, 10)); 
         mainPanel.setBackground(new Color(172, 129, 100));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10)); 
         
-        
-        JButton playButton = createButton("Play");
-        JButton addBettorsButton = createButton("Add Bettors");
-        JButton viewBettorsButton = createButton("View Bettors");
-        JButton possibleWinningsButton = createButton("Possible Winnings");
-        JButton quitButton = createButton("Quit");
+        JLabel titleLabel = new JLabel("CARRERA DE HILOS", JLabel.CENTER); 
+        titleLabel.setFont(loadFont("Res/Letra.ttf", 40)); 
+        titleLabel.setForeground(Color.WHITE); 
+        mainPanel.add(titleLabel); 
 
-        // Agregar los botones al panel principal
+        JButton playButton = createButton("JUGAR");
+        JButton addBettorsButton = createButton("anadir apostadores");
+        JButton viewBettorsButton = createButton("ver apostadores");
+        JButton possibleWinningsButton = createButton("posibles ganancias");
+        JButton quitButton = createButton("CERRAR");
+        
+        playButton.setFont(loadFont("Res/Letra.ttf", 30));
+        addBettorsButton.setFont(loadFont("Res/Letra.ttf", 30));
+        viewBettorsButton.setFont(loadFont("Res/Letra.ttf", 30));
+        possibleWinningsButton.setFont(loadFont("Res/Letra.ttf", 30));
+        quitButton.setFont(loadFont("Res/Letra.ttf", 30));
+
         mainPanel.add(playButton);
         mainPanel.add(addBettorsButton);
         mainPanel.add(viewBettorsButton);
         mainPanel.add(possibleWinningsButton);
         mainPanel.add(quitButton);
 
-        // Agregar el panel principal al frame
         add(mainPanel);
 
-        // Acciones de los botones
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,7 +110,6 @@ public class Menu extends JFrame {
             }
         });
 
-        // Agregar los listeners de teclado y ratón
         addKeyListener(keyboardInputs);
         addMouseListener(mouseInputs);
         addMouseMotionListener(mouseInputs);
@@ -117,7 +140,7 @@ public class Menu extends JFrame {
     }
 
     public void possibleWinnings() {
-        // Lógica para calcular posibles ganancias
+        
         JOptionPane.showMessageDialog(this, "Possible winnings feature coming soon.");
     }
 

@@ -76,6 +76,13 @@ public class Agregar extends JFrame {
             }
         });
 
+        nameLabel.setFont(loadFont("Res/Letra.ttf", 25));
+        betAmountLabel.setFont(loadFont("Res/Letra.ttf", 25));
+        horseLabel.setFont(loadFont("Res/Letra.ttf", 25));
+        nameField.setFont(loadFont("Res/Letra.ttf", 25));
+        betAmountField.setFont(loadFont("Res/Letra.ttf", 25));
+        horseComboBox.setFont(loadFont("Res/Letra.ttf", 25));
+
         panel.add(nameLabel);
         panel.add(nameField);
         panel.add(betAmountLabel);
@@ -93,12 +100,21 @@ public class Agregar extends JFrame {
         button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setBackground(new Color(227, 198, 168));
         button.setBorder(BorderFactory.createLineBorder(new Color(97, 153, 105), 5));
+<<<<<<< Updated upstream
 
         button.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(97, 153, 105), 2),
                 BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         button.setFocusPainted(false);
 
+=======
+        
+        button.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(97, 153, 105), 2), 
+                BorderFactory.createEmptyBorder(10, 20, 10, 20)));
+        button.setFocusPainted(false);
+        
+>>>>>>> Stashed changes
         return button;
     }
 }

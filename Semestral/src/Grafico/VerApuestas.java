@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 public class VerApuestas extends JFrame {
 
     private ArrayList<Apostador> apostadores;
+    private JTextArea apostadoresTextArea;
 
     public VerApuestas(ArrayList<Apostador> apostadores) {
         this.apostadores = apostadores;
@@ -30,17 +31,11 @@ public class VerApuestas extends JFrame {
         titleLabel.setForeground(Color.WHITE);
         panel.add(titleLabel);
 
-        JTextArea apostadoresTextArea = new JTextArea();
+        apostadoresTextArea = new JTextArea();
         apostadoresTextArea.setEditable(false);
         apostadoresTextArea.setFont(new Font("Arial", Font.PLAIN, 20));
         apostadoresTextArea.setBackground(new Color(227, 198, 168));
         apostadoresTextArea.setBorder(BorderFactory.createLineBorder(new Color(97, 153, 105), 5));
-
-        StringBuilder sb = new StringBuilder();
-        for (Apostador apostador : apostadores) {
-            sb.append(apostador.getNombre()).append(", Apuesta: ").append(apostador.getApuesta()).append("\n");
-        }
-        apostadoresTextArea.setText(sb.toString());
 
         JScrollPane scrollPane = new JScrollPane(apostadoresTextArea);
         scrollPane.setPreferredSize(new Dimension(380, 300));
@@ -60,5 +55,15 @@ public class VerApuestas extends JFrame {
         panel.add(closeButton);
 
         add(panel);
+
+        updateApostadoresText();
+    }
+
+    public void updateApostadoresText() {
+        StringBuilder sb = new StringBuilder();
+        for (Apostador apostador : apostadores) {
+            sb.append(apostador.getNombre()).append(", Apuesta: ").append(apostador.getApuesta()).append("\n");
+        }
+        apostadoresTextArea.setText(sb.toString());
     }
 }

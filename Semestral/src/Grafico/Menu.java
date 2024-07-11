@@ -1,26 +1,13 @@
 package Grafico;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
-
+import javax.swing.*;
+import javax.swing.border.Border;
 import Logico.Apostador;
 import Logico.Caballo;
 import Logico.ManejarApostador;
@@ -63,14 +50,34 @@ public class Menu extends JFrame {
         caballos.add(new Caballo("Juan", 3, "12-1-2", "Salario Mínimo", "Juan"));
 
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(6, 1, 10, 10));
+        mainPanel.setLayout(new GridLayout(7, 1, 10, 10));
         mainPanel.setBackground(new Color(172, 129, 100));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
+        
+        JPanel titlePanel = new JPanel();
+        titlePanel.setLayout(new BorderLayout());
+        titlePanel.setBackground(new Color(172, 129, 100));
+        
+        ImageIcon originalIcon = new ImageIcon("Res/Caballo1.gif");
+        Image originalImage = originalIcon.getImage();
+        Image scaledImage = originalImage.getScaledInstance(80, 80, Image.SCALE_DEFAULT); 
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        
+        
+        JLabel rightImage = new JLabel(scaledIcon);
+
+       
         JLabel titleLabel = new JLabel("CARRERA DE HILOS", SwingConstants.CENTER);
         titleLabel.setFont(loadFont("Res/Letra.ttf", 40));
         titleLabel.setForeground(Color.WHITE);
-        mainPanel.add(titleLabel);
+
+        
+        
+        titlePanel.add(titleLabel, BorderLayout.CENTER);
+        titlePanel.add(rightImage, BorderLayout.EAST);
+
+        mainPanel.add(titlePanel);
 
         JButton playButton = createButton("JUGAR");
         JButton addBettorsButton = createButton("ANADIR APOSTADORES");
@@ -109,15 +116,17 @@ public class Menu extends JFrame {
             }
         });
         
-            viewBettorsButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (apuestasFrame == null) {
-                    	apuestasFrame = new VerApuestas(apostadores);
-                    }
-                    apuestasFrame.setVisible(true);
+        viewBettorsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (apuestasFrame == null) {
+                    apuestasFrame = new VerApuestas(apostadores);
+                } else {
+                    apuestasFrame.updateApostadoresText();
                 }
-            });
+                apuestasFrame.setVisible(true);
+            }
+        });
 
         possibleWinningsButton.addActionListener(new ActionListener() {
             @Override

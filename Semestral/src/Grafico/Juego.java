@@ -1,12 +1,13 @@
 package Grafico;
 
+import Logico.Apostador;
 import javax.swing.*;
 import java.util.ArrayList;
 
 public class Juego {
-    private ArrayList<String> apostadores;
+    private ArrayList<Apostador> apostadores;
 
-    public Juego(ArrayList<String> apostadores) {
+    public Juego(ArrayList<Apostador> apostadores) {
         this.apostadores = apostadores;
     }
 

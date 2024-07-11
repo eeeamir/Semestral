@@ -82,6 +82,8 @@ public class Agregar extends JFrame {
         nameField.setFont(loadFont("Res/Letra.ttf", 25));
         betAmountField.setFont(loadFont("Res/Letra.ttf", 25));
         horseComboBox.setFont(loadFont("Res/Letra.ttf", 25));
+        addButton.setFont(loadFont("Res/Letra.ttf", 20));
+        cancelButton.setFont(loadFont("Res/Letra.ttf", 20));
 
         panel.add(nameLabel);
         panel.add(nameField);

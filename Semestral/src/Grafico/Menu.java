@@ -80,8 +80,7 @@ public class Menu extends JFrame {
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Iniciar juego
-                // juego.playGame();
+                
             }
         });
 
@@ -95,7 +94,7 @@ public class Menu extends JFrame {
         viewBettorsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ver apostadores
+                
                 StringBuilder sb = new StringBuilder("Apostadores:\n");
                 for (Apostador apostador : apostadores) {
                     sb.append(apostador.getNombre()).append(", Apuesta: ").append(apostador.getApuesta()).append("\n");
@@ -107,7 +106,7 @@ public class Menu extends JFrame {
         possibleWinningsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Posibles ganancias
+                
                 StringBuilder sb = new StringBuilder("Posibles Ganancias:\n");
                 for (Apostador apostador : apostadores) {
                     sb.append(apostador.getNombre()).append(", Ganancia: ").append(apostador.getcalcularGanancia()).append("\n");

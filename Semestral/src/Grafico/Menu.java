@@ -1,6 +1,7 @@
 package Grafico;
 
 
+
 import Grafico.Juego;
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 public class Menu extends JFrame {
     private ArrayList<String> apostadores;
@@ -44,11 +46,13 @@ public class Menu extends JFrame {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(6, 1, 10, 10)); 
         mainPanel.setBackground(new Color(172, 129, 100));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10)); 
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); 
         
         JLabel titleLabel = new JLabel("CARRERA DE HILOS", JLabel.CENTER); 
         titleLabel.setFont(loadFont("Res/Letra.ttf", 40)); 
         titleLabel.setForeground(Color.WHITE); 
+        
+        
         mainPanel.add(titleLabel); 
 
         JButton playButton = createButton("JUGAR");
@@ -57,11 +61,11 @@ public class Menu extends JFrame {
         JButton possibleWinningsButton = createButton("posibles ganancias");
         JButton quitButton = createButton("CERRAR");
         
-        playButton.setFont(loadFont("Res/Letra.ttf", 30));
-        addBettorsButton.setFont(loadFont("Res/Letra.ttf", 30));
-        viewBettorsButton.setFont(loadFont("Res/Letra.ttf", 30));
-        possibleWinningsButton.setFont(loadFont("Res/Letra.ttf", 30));
-        quitButton.setFont(loadFont("Res/Letra.ttf", 30));
+        playButton.setFont(loadFont("Res/Letra.ttf", 25));
+        addBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
+        viewBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
+        possibleWinningsButton.setFont(loadFont("Res/Letra.ttf", 25));
+        quitButton.setFont(loadFont("Res/Letra.ttf", 25));
 
         mainPanel.add(playButton);
         mainPanel.add(addBettorsButton);
@@ -114,6 +118,13 @@ public class Menu extends JFrame {
         button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setBackground(new Color(227, 198, 168));
         button.setBorder(BorderFactory.createLineBorder(new Color(97, 153, 105), 5));
+        
+        int arcSize = 15; 
+        button.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(97, 153, 105), 2), 
+                BorderFactory.createEmptyBorder(10, 20, 10, 20))); 
+        button.setFocusPainted(false); 
+        
         return button;
     }
 

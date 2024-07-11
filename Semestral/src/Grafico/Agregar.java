@@ -77,7 +77,12 @@ public class Agregar extends JFrame {
 
                 Apostador apostador = new Apostador(nombre, monto, caballo);
                 apostadores.add(apostador);
+                
+                nameField.setText("");
+                betAmountField.setText("");
+                
                 dispose();
+                
             }
         });
 

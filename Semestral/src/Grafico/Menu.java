@@ -30,6 +30,7 @@ public class Menu extends JFrame {
     private ArrayList<Apostador> apostadores;
     private ArrayList<Caballo> caballos;
     private ManejarApostador manejarApostador;
+    private Agregar agregarFrame;
 
     private Font loadFont(String path, float size) {
         Font font = null;
@@ -100,21 +101,25 @@ public class Menu extends JFrame {
         addBettorsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Agregar(apostadores, caballos).setVisible(true); // Assuming Agregar class is for adding bettors
-            }
-        });
-
-        viewBettorsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                StringBuilder sb = new StringBuilder("Apostadores:\n");
-                for (Apostador apostador : apostadores) {
-                    sb.append(apostador.getNombre()).append(", Apuesta: ").append(apostador.getApuesta()).append("\n");
+                if (agregarFrame == null) {
+                    agregarFrame = new Agregar(apostadores, caballos);
                 }
-                JOptionPane.showMessageDialog(null, sb.toString());
-
+                agregarFrame.setVisible(true);
             }
         });
+        
+            viewBettorsButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Redirigir a la clase VerApuestas
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            new VerApuestas(apostadores).setVisible(true);
+                        }
+                    });
+                }
+            });
 
         possibleWinningsButton.addActionListener(new ActionListener() {
             @Override

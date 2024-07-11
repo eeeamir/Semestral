@@ -1,60 +1,41 @@
 package Logico;
 
 public class Apostador {
-	private String nombre;
+    private String nombre;
     private double apuesta;
-    private double cuota; 
-    private int eleccion;
+    private String caballo;
 
-    public Apostador(String nombre, double apuesta, double cuota, int eleccion) {
-        if (apuesta < 0.0 ) {
-            throw new IllegalArgumentException("El importe minímo de apuesta es 0.01");
-        }
+    public Apostador(String nombre, double apuesta, String caballo) {
         this.nombre = nombre;
         this.apuesta = apuesta;
-        this.cuota = cuota;
-        this.eleccion = eleccion;
+        this.caballo = caballo;
     }
 
-    
-    public int getEleccion() {
-		return eleccion;
-	}
-
-
-	public void setEleccion(int eleccion) {
-		this.eleccion = eleccion;
-	}
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-
-	public void setApuesta(double apuesta) {
-		this.apuesta = apuesta;
-	}
-
-
-	public void setCuota(double cuota) {
-		this.cuota = cuota;
-	}
-
-
-	public String getNombre() {
+    public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public double getApuesta() {
         return apuesta;
     }
 
-    public double getCuota() {
-        return cuota;
+    public void setApuesta(double apuesta) {
+        this.apuesta = apuesta;
+    }
+
+    public String getCaballo() {
+        return caballo;
+    }
+
+    public void setCaballo(String caballo) {
+        this.caballo = caballo;
     }
 
     public double getcalcularGanancia() {
-        return apuesta * cuota;
+        return apuesta * 2; // Esto es solo un ejemplo. Deberías tener una lógica más realista.
     }
 }

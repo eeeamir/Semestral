@@ -59,23 +59,6 @@ public class Caballo {
 
     public void setJockey(String jockey) {
         this.jockey = jockey;
-    }
+    }}
     
-    public static void main(String[] args) {
-        ArrayList<Caballo> caballos = new ArrayList<>();
-        
-        caballos.add(new Caballo("Selfiri", 5, "10-6-1","Negro", "Ikinho"));
-        caballos.add(new Caballo("Pegaso", 3, "8-6-0","Blanco", "Zeus"));
-        caballos.add(new Caballo("Tiro al blanco", 4, "12-9-2","Chocolate", "Woody"));
-        caballos.add(new Caballo("Juan", 3, "12-1-2","Salario Mínimo", "Juan"));
-
-        for (Caballo caballo : caballos) {
-            System.out.println("Nombre: " + caballo.getNombre());
-            System.out.println("Edad: " + caballo.getEdad());
-            System.out.println("Historial: " + caballo.getHistorial());
-            System.out.println("Jockey: " + caballo.getJockey());
-            System.out.println();
-        }
-    }
-}
-
+    

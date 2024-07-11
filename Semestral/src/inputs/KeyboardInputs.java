@@ -2,47 +2,47 @@ package inputs;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import Main.Game;
-import Main.GamePanel;
+import Grafico.Menu;
 
 public class KeyboardInputs implements KeyListener {
+    private Menu menu;
 
-	private GamePanel gamePanel;
+    public KeyboardInputs(Menu menu) {
+        this.menu = menu;
+    }
 
-	public KeyboardInputs(GamePanel gamePanel) {
-		this.gamePanel = gamePanel;
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+    public void keyTyped(KeyEvent e) {
+        // No implementado
+    }
 
-	}
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // No implementado
+    }
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_W:
-			gamePanel.changeYDelta(-5);
-			break;
-		case KeyEvent.VK_A:
-			gamePanel.changeXDelta(-5);
-			break;
-		case KeyEvent.VK_S:
-			gamePanel.changeYDelta(5);
-			break;
-		case KeyEvent.VK_D:
-			gamePanel.changeXDelta(5);
-			break;
-		}
-
-	}
-
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        switch (key) {
+            case KeyEvent.VK_P:
+               
+                break;
+            case KeyEvent.VK_A:
+                menu.addBettors();
+                break;
+            case KeyEvent.VK_V:
+                menu.viewBettors();
+                break;
+            case KeyEvent.VK_W:
+                menu.possibleWinnings();
+                break;
+            case KeyEvent.VK_Q:
+                System.exit(0);
+                break;
+            default:
+                break;
+        }
+    }
 }

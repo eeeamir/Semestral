@@ -74,7 +74,7 @@ public class Menu extends JFrame {
 
         JButton playButton = createButton("JUGAR");
         JButton addBettorsButton = createButton("ANADIR APOSTADORES");
-        JButton viewBettorsButton = createButton("VER APOSTADORES");
+        JButton viewBettorsButton = createButton("VER APUESTAS");
         JButton possibleWinningsButton = createButton("POSIBLES GANANCIAS");
         JButton quitButton = createButton("CERRAR");
 

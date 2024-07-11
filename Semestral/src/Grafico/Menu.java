@@ -48,12 +48,16 @@ public class Menu extends JFrame {
         mainPanel.setBackground(new Color(172, 129, 100));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); 
         
-        JLabel titleLabel = new JLabel("CARRERA DE HILOS", JLabel.CENTER); 
-        titleLabel.setFont(loadFont("Res/Letra.ttf", 40)); 
-        titleLabel.setForeground(Color.WHITE); 
-        
-        
-        mainPanel.add(titleLabel); 
+        JLabel titleLabel = new JLabel("CARRERA DE HILOS", JLabel.CENTER);
+
+         try {
+            titleLabel.setFont(loadFont("Res/Letra.ttf", 40));
+        } catch (FontLoadException e) {
+            titleLabel.setFont(new Font("Arial", Font.BOLD, 40));
+            e.printStackTrace();
+        }
+        titleLabel.setForeground(Color.WHITE);
+        mainPanel.add(titleLabel);
 
         JButton playButton = createButton("JUGAR");
         JButton addBettorsButton = createButton("anadir apostadores");
@@ -61,11 +65,21 @@ public class Menu extends JFrame {
         JButton possibleWinningsButton = createButton("posibles ganancias");
         JButton quitButton = createButton("CERRAR");
         
-        playButton.setFont(loadFont("Res/Letra.ttf", 25));
-        addBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
-        viewBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
-        possibleWinningsButton.setFont(loadFont("Res/Letra.ttf", 25));
-        quitButton.setFont(loadFont("Res/Letra.ttf", 25));
+        try {
+            playButton.setFont(loadFont("Res/Letra.ttf", 25));
+            addBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
+            viewBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
+            possibleWinningsButton.setFont(loadFont("Res/Letra.ttf", 25));
+            quitButton.setFont(loadFont("Res/Letra.ttf", 25));
+        } catch (FontLoadException e) {
+            Font defaultFont = new Font("Arial", Font.BOLD, 25);
+            playButton.setFont(defaultFont);
+            addBettorsButton.setFont(defaultFont);
+            viewBettorsButton.setFont(defaultFont);
+            possibleWinningsButton.setFont(defaultFont);
+            quitButton.setFont(defaultFont);
+            e.printStackTrace();
+        }
 
         mainPanel.add(playButton);
         mainPanel.add(addBettorsButton);
@@ -82,10 +96,14 @@ public class Menu extends JFrame {
             }
         });
 
-        addBettorsButton.addActionListener(new ActionListener() {
+          addBettorsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addBettors();
+                try {
+                    addBettors();
+                } catch (InvalidBettorException ex) {
+                    JOptionPane.showMessageDialog(Menu.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
@@ -128,12 +146,13 @@ public class Menu extends JFrame {
         return button;
     }
 
-    public void addBettors() {
+  public void addBettors() throws InvalidBettorException {
         String name = JOptionPane.showInputDialog(this, "Enter bettor's name:");
-        if (name != null && !name.trim().isEmpty()) {
-            apostadores.add(name.trim());
-            JOptionPane.showMessageDialog(this, "Bettor added.");
+        if (name == null || name.trim().isEmpty()) {
+            throw new InvalidBettorException("Error el parametro no puede estar en blanco.");
         }
+        apostadores.add(name.trim());
+        JOptionPane.showMessageDialog(this, "Bettor added.");
     }
 
     public void viewBettors() {

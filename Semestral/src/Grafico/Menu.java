@@ -1,11 +1,8 @@
 package Grafico;
 
-
 import Logico.Apostador;
 import Logico.Caballo;
 import Logico.ManejarApostador;
-=======
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,10 +31,6 @@ public class Menu extends JFrame {
         return font;
     }
 
-    private ArrayList<String> apostadores;
-    private Juego juego;
-
-
     public Menu() {
         setTitle("Carreras ilegales");
         setSize(560, 720);
@@ -48,13 +41,10 @@ public class Menu extends JFrame {
         caballos = new ArrayList<>();
         manejarApostador = new ManejarApostador();
 
-
-        
         caballos.add(new Caballo("Selfiri", 5, "10-6-1", "Negro", "Ikinho"));
         caballos.add(new Caballo("Pegaso", 3, "8-6-0", "Blanco", "Zeus"));
         caballos.add(new Caballo("Tiro al blanco", 4, "12-9-2", "Chocolate", "Woody"));
         caballos.add(new Caballo("Juan", 3, "12-1-2", "Salario Mínimo", "Juan"));
-
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(6, 1, 10, 10));
@@ -62,20 +52,8 @@ public class Menu extends JFrame {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JLabel titleLabel = new JLabel("CARRERA DE HILOS", JLabel.CENTER);
-
         titleLabel.setFont(loadFont("Res/Letra.ttf", 40));
         titleLabel.setForeground(Color.WHITE);
-
-
-
-        try {
-            titleLabel.setFont(loadFont("Res/Letra.ttf", 40));
-        } catch (FontLoadException e) {
-            titleLabel.setFont(new Font("Arial", Font.BOLD, 40));
-            e.printStackTrace();
-        }
-        titleLabel.setForeground(Color.WHITE);
-
         mainPanel.add(titleLabel);
 
         JButton playButton = createButton("JUGAR");
@@ -84,29 +62,11 @@ public class Menu extends JFrame {
         JButton possibleWinningsButton = createButton("POSIBLES GANANCIAS");
         JButton quitButton = createButton("CERRAR");
 
-
         playButton.setFont(loadFont("Res/Letra.ttf", 25));
         addBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
         viewBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
         possibleWinningsButton.setFont(loadFont("Res/Letra.ttf", 25));
         quitButton.setFont(loadFont("Res/Letra.ttf", 25));
-
-        try {
-            playButton.setFont(loadFont("Res/Letra.ttf", 25));
-            addBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
-            viewBettorsButton.setFont(loadFont("Res/Letra.ttf", 25));
-            possibleWinningsButton.setFont(loadFont("Res/Letra.ttf", 25));
-            quitButton.setFont(loadFont("Res/Letra.ttf", 25));
-        } catch (FontLoadException e) {
-            Font defaultFont = new Font("Arial", Font.BOLD, 25);
-            playButton.setFont(defaultFont);
-            addBettorsButton.setFont(defaultFont);
-            viewBettorsButton.setFont(defaultFont);
-            possibleWinningsButton.setFont(defaultFont);
-            quitButton.setFont(defaultFont);
-            e.printStackTrace();
-        }
-
 
         mainPanel.add(playButton);
         mainPanel.add(addBettorsButton);
@@ -126,34 +86,25 @@ public class Menu extends JFrame {
         addBettorsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                new Agregar(apostadores, caballos).setVisible(true);
+                new Agregar(apostadores, caballos).setVisible(true); // Assuming Agregar class is for adding bettors
             }
         });
 
         viewBettorsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
                 StringBuilder sb = new StringBuilder("Apostadores:\n");
                 for (Apostador apostador : apostadores) {
                     sb.append(apostador.getNombre()).append(", Apuesta: ").append(apostador.getApuesta()).append("\n");
                 }
                 JOptionPane.showMessageDialog(null, sb.toString());
-
-                try {
-                    addBettors();
-                } catch (InvalidBettorException ex) {
-                    JOptionPane.showMessageDialog(Menu.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                }
-
+                
             }
-
+        });
 
         possibleWinningsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
                 StringBuilder sb = new StringBuilder("Posibles Ganancias:\n");
                 for (Apostador apostador : apostadores) {
                     sb.append(apostador.getNombre()).append(", Ganancia: ").append(apostador.getcalcularGanancia()).append("\n");
@@ -193,4 +144,3 @@ public class Menu extends JFrame {
         });
     }
 }
-

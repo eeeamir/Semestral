@@ -36,6 +36,6 @@ public class Apostador {
     }
 
     public double getcalcularGanancia() {
-        return apuesta * 2; // Esto es solo un ejemplo. Deberías tener una lógica más realista.
+        return apuesta * 2; 
     }
 }

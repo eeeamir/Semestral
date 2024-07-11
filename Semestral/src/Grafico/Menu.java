@@ -1,7 +1,6 @@
 package Grafico;
 
-import inputs.KeyboardInputs;
-import inputs.MouseInputs;
+
 import Grafico.Juego;
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +13,7 @@ import java.util.ArrayList;
 public class Menu extends JFrame {
     private ArrayList<String> apostadores;
     private Juego juego;
-    private KeyboardInputs keyboardInputs;
-    private MouseInputs mouseInputs;
+ 
     
     private Font loadFont(String path, float size) {
         Font font = null;
@@ -42,8 +40,6 @@ public class Menu extends JFrame {
         apostadores = new ArrayList<>();
         juego = new Juego(apostadores);
 
-        keyboardInputs = new KeyboardInputs(this);
-        mouseInputs = new MouseInputs();
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(6, 1, 10, 10)); 
@@ -110,9 +106,7 @@ public class Menu extends JFrame {
             }
         });
 
-        addKeyListener(keyboardInputs);
-        addMouseListener(mouseInputs);
-        addMouseMotionListener(mouseInputs);
+        
     }
     
     private JButton createButton(String text) {

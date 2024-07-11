@@ -1,7 +1,5 @@
 package Logico;
 
-import java.util.ArrayList;
-
 public class Caballo {
     private String nombre;
     private int edad;
@@ -9,7 +7,7 @@ public class Caballo {
     private String color;
     private String jockey;
 
-   
+
     public Caballo(String nombre, int edad, String historial,String color, String jockey) {
         this.nombre = nombre;
         this.edad = edad;
@@ -18,7 +16,7 @@ public class Caballo {
         this.jockey = jockey;
     }
 
-    
+
     public String getColor() {
 		return color;
 	}
@@ -60,5 +58,5 @@ public class Caballo {
     public void setJockey(String jockey) {
         this.jockey = jockey;
     }}
-    
-    
+
+

@@ -1,14 +1,27 @@
 package Grafico;
 
-import Logico.Apostador;
-import Logico.Caballo;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+
+import Logico.Apostador;
+import Logico.Caballo;
 
 public class Agregar extends JFrame {
     private ArrayList<Apostador> apostadores;
@@ -34,7 +47,7 @@ public class Agregar extends JFrame {
 
         setTitle("Agregar Apostador");
         setSize(400, 500);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
@@ -110,12 +123,12 @@ public class Agregar extends JFrame {
         button.setFocusPainted(false);
 
 
-        
+
         button.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(97, 153, 105), 2), 
+                BorderFactory.createLineBorder(new Color(97, 153, 105), 2),
                 BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         button.setFocusPainted(false);
-        
+
 
         return button;
     }

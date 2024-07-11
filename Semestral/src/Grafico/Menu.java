@@ -1,15 +1,29 @@
 package Grafico;
 
-import Logico.Apostador;
-import Logico.Caballo;
-import Logico.ManejarApostador;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
+
+import Logico.Apostador;
+import Logico.Caballo;
+import Logico.ManejarApostador;
 
 public class Menu extends JFrame {
 
@@ -34,7 +48,7 @@ public class Menu extends JFrame {
     public Menu() {
         setTitle("Carreras ilegales");
         setSize(560, 720);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         apostadores = new ArrayList<>();
@@ -51,7 +65,7 @@ public class Menu extends JFrame {
         mainPanel.setBackground(new Color(172, 129, 100));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        JLabel titleLabel = new JLabel("CARRERA DE HILOS", JLabel.CENTER);
+        JLabel titleLabel = new JLabel("CARRERA DE HILOS", SwingConstants.CENTER);
         titleLabel.setFont(loadFont("Res/Letra.ttf", 40));
         titleLabel.setForeground(Color.WHITE);
         mainPanel.add(titleLabel);
@@ -79,7 +93,7 @@ public class Menu extends JFrame {
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
 
@@ -98,7 +112,7 @@ public class Menu extends JFrame {
                     sb.append(apostador.getNombre()).append(", Apuesta: ").append(apostador.getApuesta()).append("\n");
                 }
                 JOptionPane.showMessageDialog(null, sb.toString());
-                
+
             }
         });
 

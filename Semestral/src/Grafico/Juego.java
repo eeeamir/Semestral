@@ -1,8 +1,10 @@
 package Grafico;
 
-import Logico.Apostador;
-import javax.swing.*;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+import Logico.Apostador;
 
 public class Juego {
     private ArrayList<Apostador> apostadores;

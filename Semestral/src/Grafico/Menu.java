@@ -31,6 +31,7 @@ public class Menu extends JFrame {
     private ArrayList<Caballo> caballos;
     private ManejarApostador manejarApostador;
     private Agregar agregarFrame;
+    private VerApuestas apuestasFrame;
 
     private Font loadFont(String path, float size) {
         Font font = null;
@@ -111,13 +112,10 @@ public class Menu extends JFrame {
             viewBettorsButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    // Redirigir a la clase VerApuestas
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            new VerApuestas(apostadores).setVisible(true);
-                        }
-                    });
+                    if (apuestasFrame == null) {
+                    	apuestasFrame = new VerApuestas(apostadores);
+                    }
+                    apuestasFrame.setVisible(true);
                 }
             });
 
